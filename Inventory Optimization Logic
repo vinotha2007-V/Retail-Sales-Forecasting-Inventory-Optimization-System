@@ -1,0 +1,16 @@
+import pandas as pd
+
+def optimize_inventory(forecast_file):
+    df = pd.read_csv(forecast_file)
+
+    safety_stock = 10
+
+    df['recommended_stock'] = df['predicted_sales'] + safety_stock
+
+    df['reorder_point'] = df['predicted_sales'] * 1.2
+
+    return df
+
+if __name__ == "__main__":
+    result = optimize_inventory('../outputs/forecast_results.csv')
+    print(result)
