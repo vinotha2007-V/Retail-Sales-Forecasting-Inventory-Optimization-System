@@ -1,0 +1,25 @@
+Retail-Sales-Forecasting/
+│
+├── data/
+│   ├── sales_data.csv
+│
+├── notebooks/
+│   ├── EDA.ipynb
+│
+├── src/
+│   ├── data_preprocessing.py
+│   ├── train_model.py
+│   ├── forecast.py
+│   ├── inventory_optimizer.py
+│
+├── models/
+│   ├── sales_model.pkl
+│
+├── outputs/
+│   ├── forecast_results.csv
+│
+├── app/
+│   ├── app.py
+│
+├── requirements.txt
+├── README.md
