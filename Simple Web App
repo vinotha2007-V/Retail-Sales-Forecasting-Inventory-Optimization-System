@@ -1,0 +1,12 @@
+from flask import Flask, jsonify
+import pandas as pd
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    df = pd.read_csv('../outputs/forecast_results.csv')
+    return df.to_json()
+
+if __name__ == "__main__":
+    app.run(debug=True)
