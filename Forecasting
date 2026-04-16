@@ -1,0 +1,25 @@
+import pandas as pd
+import joblib
+from datetime import datetime, timedelta
+
+model = joblib.load('../models/sales_model.pkl')
+
+future_dates = [datetime.now() + timedelta(days=i) for i in range(7)]
+
+data = pd.DataFrame({
+    'day': [d.day for d in future_dates],
+    'month': [d.month for d in future_dates],
+    'year': [d.year for d in future_dates],
+    'weekday': [d.weekday() for d in future_dates]
+})
+
+predictions = model.predict(data)
+
+forecast = pd.DataFrame({
+    'date': future_dates,
+    'predicted_sales': predictions
+})
+
+forecast.to_csv('../outputs/forecast_results.csv', index=False)
+
+print(forecast)
